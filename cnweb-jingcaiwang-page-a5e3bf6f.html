@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>中国竞彩网 · 信息卡片介绍页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f1f6fb;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1f2937;
+      line-height: 1.6;
+      padding: 1.5rem 1rem 3rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrapper {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    /* 主视觉卡片 —— 带有蓝绿渐变与柔和阴影 */
+    .hero-card {
+      background: linear-gradient(135deg, #d6eaf8 0%, #a8e6cf 100%);
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 28px rgba(0, 80, 70, 0.08);
+      transition: box-shadow 0.25s ease;
+    }
+
+    .hero-card h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #0b3b3a;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-card .tagline {
+      font-size: 1rem;
+      color: #1e5855;
+      background: rgba(255,255,255,0.4);
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      margin-bottom: 1.2rem;
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-card p {
+      font-size: 1.05rem;
+      color: #0d3f3d;
+      max-width: 90%;
+    }
+
+    /* 网格卡片容器 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 1.6rem;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 4px 14px rgba(22, 72, 80, 0.06);
+      border: 1px solid rgba(160, 200, 190, 0.2);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      backdrop-filter: blur(1px);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(34, 120, 100, 0.08);
+      border-color: #78c4b0;
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+      display: inline-block;
+      background: #d0ece0;
+      width: 2.8rem;
+      height: 2.8rem;
+      line-height: 2.8rem;
+      text-align: center;
+      border-radius: 50%;
+    }
+
+    .card h3 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #0a4a45;
+      margin: 0.6rem 0 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2c3e4e;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 0.6rem;
+    }
+
+    .card ul li {
+      font-size: 0.9rem;
+      padding: 0.25rem 0;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .card ul li::before {
+      content: "▹";
+      color: #229d86;
+      font-weight: 600;
+    }
+
+    .link-section {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.8rem 1.6rem;
+      margin: 2rem 0 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border-left: 6px solid #3fbba3;
+    }
+
+    .link-section p {
+      font-size: 1rem;
+      color: #1f3738;
+      line-height: 1.7;
+    }
+
+    .link-section a {
+      color: #0b6b5c;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid #9fd9cb;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .link-section a:hover {
+      color: #054b41;
+      border-bottom-color: #156b5b;
+    }
+
+    .faq-summary {
+      background: #eaf6f2;
+      border-radius: 1.8rem;
+      padding: 1.8rem 1.6rem;
+      margin-top: 2rem;
+    }
+
+    .faq-summary h4 {
+      font-size: 1.1rem;
+      color: #0a4f47;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .faq-item {
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-question {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #11554c;
+      margin-bottom: 0.15rem;
+    }
+
+    .faq-answer {
+      font-size: 0.9rem;
+      color: #1f4d48;
+      opacity: 0.8;
+      padding-left: 0.6rem;
+      border-left: 3px solid #7acaba;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #678d87;
+      text-align: center;
+      border-top: 1px solid #c7e1d9;
+      padding-top: 1.2rem;
+    }
+
+    /* 移动端细节修正 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem 0.8rem 2.5rem;
+      }
+      .hero-card {
+        padding: 1.6rem 1.2rem;
+      }
+      .hero-card h1 {
+        font-size: 1.6rem;
+      }
+      .hero-card p {
+        max-width: 100%;
+      }
+      .grid-cards {
+        gap: 1rem;
+      }
+      .card {
+        padding: 1.3rem;
+      }
+      .link-section {
+        padding: 1.4rem;
+      }
+      .faq-summary {
+        padding: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <!-- 主视觉卡片 -->
+  <div class="hero-card">
+    <div class="tagline">📋 信息 · 卡片式</div>
+    <h1>中国竞彩网 · 一眼识别</h1>
+    <p>无论你是刚接触竞彩的爱好者，还是已有经验的老用户，一个清晰、直达的信息页面能帮你快速判断：这个网站是否适合自己。以下内容围绕 <strong>中国竞彩网</strong> 的核心用途展开，没有冗余，只有实在的介绍。</p>
+  </div>
+
+  <!-- 用途卡片 × 适合人群卡片（网格） -->
+  <div class="grid-cards">
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>主要用途</h3>
+      <p>提供国内合规的竞彩足球、篮球赛事信息、即时赔率与赛果查询。网站聚合了主流竞猜玩法的数据面板，方便用户快速了解赛事动态与投注参考。</p>
+      <ul>
+        <li>竞彩足球 / 篮球赛程</li>
+        <li>赔率变动与奖金试算</li>
+        <li>赛果与过关统计</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <h3>适合人群</h3>
+      <p>竞彩入门用户、赛事分析爱好者、以及需要集中查看竞彩数据的彩民朋友。不论你是想初步了解规则，还是日常查询赛程，都能在这里找到对应信息。</p>
+      <ul>
+        <li>竞彩新手——查看规则与玩法</li>
+        <li>资深用户——跟踪赔率变化</li>
+        <li>数据型玩家——分析赛果走势</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 自然链接段落（嵌入a标签） -->
+  <div class="link-section">
+    <p>竞彩数据是否准确、信息是否及时，是多数用户最关心的事。如果你正在寻找一个可靠的竞彩信息聚合页面，可以直接浏览 <a href="https://cnweb-jingcaiwang.com">中国竞彩网</a> 。该站点主要围绕国内竞彩玩法搭建内容模块，从赛事列表到奖金模拟，都保持比较清爽的呈现方式，没有过多干扰信息。</p>
+  </div>
+
+  <!-- 补充卡片：场景提示 + 额外特点（用网格再排一张） -->
+  <div class="grid-cards">
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <h3>典型使用场景</h3>
+      <p>比如周末五大联赛密集开赛，你想快速筛选当天哪些赛事开了单关、哪些是串关。或者查询一场已经结束的比赛，实际赛果与赔率是否吻合。这些场景下，<strong>中国竞彩网</strong>都能提供基础但必要的面板。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h3>页面体验特点</h3>
+      <p>没有弹窗干扰，卡片式布局在手机端阅读友好。数据分类比较直观：足球、篮球、混合过关独立展示。对于只想看数据、不想被广告分心的用户来说，是相对轻量的选择。</p>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要卡片（简洁风格） -->
+  <div class="faq-summary">
+    <h4>❓ 常见疑问摘要</h4>
+    <div class="faq-item">
+      <div class="faq-question">中国竞彩网是官方平台吗？</div>
+      <div class="faq-answer">该网站为竞彩信息聚合站点，提供赛事数据与赔率参考，不涉及直接投注。具体请以官方体彩门店或授权渠道为准。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">需要注册才能看数据吗？</div>
+      <div class="faq-answer">大部分赛程、赛果、赔率浏览不需要注册，直接访问即可查看，方便快速。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">移动端体验如何？</div>
+      <div class="faq-answer">采用响应式布局，在手机浏览器上缩放自如，卡片与文字排版经过适配，阅读体验比较顺畅。</div>
+    </div>
+  </div>
+
+  <!-- 很小的底部注脚 （不重复a标签）-->
+  <div class="footer-note">
+    信息卡片版 · 仅作介绍用途 · 数据以实际页面为准
+  </div>
+</div>
+</body>
+</html>
