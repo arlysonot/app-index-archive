@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开云体育app · 简明使用指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f9fafb;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e1e2a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 4rem;
+    }
+
+    /* hero */
+    .hero {
+      text-align: center;
+      padding: 3rem 0 2.2rem;
+      border-bottom: 1px solid #e4e7ec;
+    }
+
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b0c10;
+    }
+
+    .hero .sub {
+      font-size: 1.05rem;
+      color: #4b5563;
+      margin-top: 0.7rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* 通用章节 */
+    section {
+      margin-top: 2.8rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      border-left: 4px solid #2b7a5a;
+      padding-left: 1rem;
+      margin-bottom: 1.1rem;
+      color: #0f172a;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: #2e3440;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 1.2rem 1.1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.03);
+      border: 1px solid #edf0f5;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #1f2937;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: #4a5568;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    /* 说明区块 */
+    .note-box {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.6rem 1.5rem;
+      margin: 2rem 0 1.8rem;
+      border: 1px solid #e9edf3;
+    }
+
+    .note-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .note-box li {
+      position: relative;
+      padding-left: 1.6rem;
+      margin-bottom: 0.6rem;
+      color: #2d3748;
+    }
+
+    .note-box li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #2b7a5a;
+      font-weight: 500;
+    }
+
+    /* FAQ 摘要 */
+    .faq-item {
+      border-bottom: 1px solid #e6eaef;
+      padding: 1.1rem 0;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .faq-q::before {
+      content: "Q";
+      display: inline-block;
+      background: #eef5f1;
+      color: #2b7a5a;
+      font-weight: 700;
+      font-size: 0.75rem;
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 1.4rem;
+      margin-right: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .faq-a {
+      color: #4a5568;
+      margin-left: 1.9rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-a a {
+      color: #1f6e48;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .faq-a a:hover {
+      color: #0b4d31;
+    }
+
+    /* 底部 */
+    .footer-links {
+      margin-top: 3.2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e4e7ec;
+      text-align: center;
+      font-size: 0.92rem;
+      color: #5b6878;
+    }
+
+    .footer-links a {
+      color: #1f6e48;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links .sep {
+      margin: 0 0.6rem;
+      color: #bcc3cf;
+    }
+
+    /* 响应式 */
+    @media (max-width: 540px) {
+      .page {
+        padding: 2.2rem 1.2rem 3rem;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+      }
+
+      .card {
+        padding: 1rem 0.9rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* 链接嵌入句 */
+    .inline-link {
+      color: #1f6e48;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .inline-link:hover {
+      color: #0b4d31;
+    }
+
+    .quiet-tip {
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin: 1.8rem 0 0.8rem;
+      font-size: 0.93rem;
+      color: #2d3748;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Hero 区 -->
+    <header class="hero">
+      <h1>开云体育app · 简明指南</h1>
+      <p class="sub">一份关于平台特性、访问思路与常见疑问的整理说明</p>
+    </header>
+
+    <!-- 优势区 -->
+    <section>
+      <h2>平台特点</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>界面与加载</h3>
+          <p>采用轻量级结构，页面切换连贯，内容区域层次分明，方便快速查找体育项目与数据。</p>
+        </div>
+        <div class="card">
+          <h3>项目覆盖</h3>
+          <p>涵盖足、篮、网球及电竞等主流赛事，同时提供实时比分、赛程追踪等基础工具。</p>
+        </div>
+        <div class="card">
+          <h3>信息呈现</h3>
+          <p>数据面板采用卡片式布局，比赛状态、赔率变动及统计信息一目了然，减少冗余滚动。</p>
+        </div>
+        <div class="card">
+          <h3>适配习惯</h3>
+          <p>支持多端自适应调整，移动端阅读与操作体验经过专门优化，保留关键信息密度。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 说明区：使用场景与提示 -->
+    <section>
+      <h2>访问与使用提醒</h2>
+      <div class="note-box">
+        <ul>
+          <li>建议通过主流浏览器（Chrome / Safari / Edge）访问，保持系统与浏览器为较新版本。</li>
+          <li>如遇页面加载延迟或布局异常，可先清理浏览器缓存及 DNS 缓存后再试。</li>
+          <li>登录时注意核对网址域名，避免使用第三方非官方入口或链接。</li>
+          <li>公共网络环境下建议关闭 VPN 或代理再访问，部分节点可能影响连接稳定性。</li>
+          <li>内容展示与赔率数据仅供参考，不构成任何投资或参与建议。</li>
+        </ul>
+      </div>
+      <p>若想直接进入平台，可在浏览器地址栏手动输入官方域名，或通过本页底部的链接访问。建议将 <a href="https://zh-client-kysports.com" class="inline-link">开云体育app</a> 添加为书签，方便日后快速定位，同时避免误入仿冒或钓鱼站点。</p>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section>
+      <h2>常见疑问 · 摘要</h2>
+      <div class="faq-item">
+        <div class="faq-q">是否需要注册才能浏览赛事数据？</div>
+        <div class="faq-a">大部分赛事列表、比分和赛程信息无需登录即可查看；参与互动或使用个性化功能则需完成注册。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">移动端与电脑端体验是否一致？</div>
+        <div class="faq-a">核心数据与导航逻辑保持一致，移动端针对触控和小屏做了布局优化。推荐使用横屏查看详细赔率对比。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">页面显示不全或按钮无响应怎么办？</div>
+        <div class="faq-a">先尝试刷新页面或切换网络（如 Wi-Fi 换蜂窝）。若仍有问题，检查是否有浏览器插件（如广告拦截器）影响了页面脚本。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">是否支持多语言界面？</div>
+        <div class="faq-a">目前以中文为主要界面语言，部分赛事数据可能包含英文缩写或队伍原名，不影响主要阅读。</div>
+      </div>
+      <div class="quiet-tip">
+        ⚡ 如需更完整 FAQ，可直接在站内帮助中心搜索关键词。所有说明均以平台实际更新为准。
+      </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="footer-links">
+      <p>
+        <a href="https://zh-client-kysports.com">开云体育app</a>
+        <span class="sep">·</span>
+        建议使用 HTTPS 访问
+        <span class="sep">·</span>
+        本指南仅作信息整理
+      </p>
+      <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #7b8a9b;">
+        页面更新时间：2025 · 内容仅供个人参考
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
